@@ -31,6 +31,9 @@ def create_channel(channel_type):
         return WechatMPChannel(passive_reply=False)
     elif channel_type == "wechatcom_app":
         from channel.wechatcom.wechatcomapp_channel import WechatComAppChannel
+    elif channel_type == "wechat_chatbot":
+        from channel.wechatbot.chatbotserver_channel import ChatBotServerChannel
 
-        return WechatComAppChannel()
+        return ChatBotServerChannel()
+
     raise RuntimeError

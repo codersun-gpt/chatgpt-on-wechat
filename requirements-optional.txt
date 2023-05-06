@@ -12,6 +12,7 @@ langid # language detect
 
 #install plugin
 dulwich
+flask
 
 # wechaty
 wechaty>=0.10.7

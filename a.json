@@ -1,0 +1,12 @@
+GET /chatbot?
+encryptText=gAM6LDbK5ENtQuegEVJ5rkZwct7WkrEDEnERILpFl9QLBl0bftfVumpx6qppubSQFVGyG9E8MGQ1tpzOAFNzXA%3D%3D&
+http_method=get&
+msg={
+    "intents": [
+        "dd.正则提取",
+        "a.aa"
+    ],
+    "query": "dd",
+    "query.preprocessed": "dd",
+    "slots": {}
+}
