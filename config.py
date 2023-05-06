@@ -125,6 +125,8 @@ available_setting = {
     "wechatcomapp_secret": "",  # 企业微信app的secret
     "wechatcomapp_agent_id": "",  # 企业微信app的agent_id
     "wechatcomapp_aes_key": "",  # 企业微信app的aes_key
+    # chatbot_server_port的通用配置
+    "chatbot_server_port": 9898,
 
     # 飞书配置
     "feishu_port": 80,  # 飞书bot监听端口

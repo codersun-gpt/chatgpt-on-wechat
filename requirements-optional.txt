@@ -12,6 +12,7 @@ langid # language detect
 
 #install plugin
 dulwich
+flask
 
 # wechatmp && wechatcom
 web.py
