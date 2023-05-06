@@ -4,7 +4,7 @@ import os
 import time
 
 import requests
-from flask import Flask, request
+from flask import Flask, request, jsonify, make_response
 from bridge.context import *
 import web
 from wechatpy.enterprise import create_reply, parse_message
@@ -68,4 +68,9 @@ def chatBot():
     if context:
         channel.produce(context)
 
-    return {"data_list": {"reply": "reply:" + msg}, "error_code": 0}
+    data = {"data_list": {"reply": "reply:" + msg}, "error_code": 0}
+    # 设置响应的 Content Type
+    resp = make_response(jsonify(data))
+    resp.headers["Content-Type"] = "application/json; charset=utf-8"
+
+    return resp
