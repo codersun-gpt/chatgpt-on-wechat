@@ -1,26 +1,15 @@
 # -*- coding=utf-8 -*-
-import io
-import os
-import time
 
-import requests
 from flask import Flask, request
 from bridge.context import *
-import web
-from wechatpy.enterprise import create_reply, parse_message
-from wechatpy.enterprise.crypto import WeChatCrypto
-from wechatpy.enterprise.exceptions import InvalidCorpIdException
-from wechatpy.exceptions import InvalidSignatureException, WeChatClientException
 
 from bridge.context import Context
-from bridge.reply import Reply, ReplyType
+from bridge.reply import Reply
 from channel.chat_channel import ChatChannel
 from channel.wechatbot.chatbotserver_message import ChatbotServerMessage
 from common.log import logger
 from common.singleton import singleton
-from common.utils import compress_imgfile, fsize, split_string_by_utf8_length
-from config import conf, subscribe_msg
-from voice.audio_convert import any_to_amr, split_audio
+from config import conf
 
 MAX_UTF8_LEN = 2048
 
@@ -41,7 +30,7 @@ class ChatBotServerChannel(ChatChannel):
         app.run("0.0.0.0", port, debug=True)
 
     def send(self, reply: Reply, context: Context):
-        logger.info("[chatbot] requestId:{} msg:[{}] reply: [{}]".format(Context.msg_id, Context.content, reply))
+        logger.info("[chatbot] requestId:{} msg:[{}] reply: [{}]".format("context.msg_id", context.content, reply))
 
 
 @app.route("/chatbot", methods=["GET", "POST"])
@@ -64,7 +53,7 @@ def chatBot():
 
     msg = params["msg"]
 
-    context = channel._compose_context(ContextType.TEXT, msg, msg=ChatbotServerMessage(requestId, uid, msg))
+    context = channel._compose_context(ContextType.TEXT, msg,msg=ChatbotServerMessage(requestId, uid, msg))
     if context:
         channel.produce(context)
 

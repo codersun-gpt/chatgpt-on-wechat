@@ -1,9 +1,6 @@
-from wechatpy.enterprise import WeChatClient
 
 from bridge.context import ContextType
 from channel.chat_message import ChatMessage
-from common.log import logger
-from common.tmp_dir import TmpDir
 
 
 class ChatbotServerMessage(ChatMessage):
